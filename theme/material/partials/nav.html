@@ -1,0 +1,57 @@
+<!-- Main navigation -->
+<nav class="md-nav md-nav--primary" data-md-level="0">
+
+    <!-- Site title -->
+    <label class="md-nav__title md-nav__title--site" for="__drawer">
+        <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
+           title="{{ config.site_name }}" class="md-nav__button md-logo">
+            {% if config.theme.logo.icon %}
+            <i class="md-icon">{{ config.theme.logo.icon }}</i>
+            {% else %}
+            <img src="{{ config.theme.logo | url }}" width="48" height="48" />
+            {% endif %}
+        </a>
+        {{ config.site_name }}
+        <label for="Versions">Ver:
+            <select id="versions" onchange="window.location.href=this.value;" style="
+		position: inherit;
+		display: inline;
+		min-width: 25%;
+		/* width: 120%; */
+		height: 25px;
+		padding: 5px 15px 5px 5px;
+		color: Black;
+		border: none;
+		background: transparent;
+		outline: none;
+		-webkit-appearance: none;
+		z-index: 99;
+		cursor: pointer;
+		font-size: 12px;
+		margin-bottom: 10px;
+		border: 1px solid black;
+		overflow: auto
+	">
+                <option value="" selected="selected">Versions</option>
+                <option value="/versions/IS/IS530/5.3.0">5.3.0</option>
+                <option value="/versions/IS/IS540/5.4.0">5.4.0</option>
+                <option value="/versions/IS/IS550/5.5.0">5.5.0</option>
+            </select>
+        </label>
+    </label>
+    <!-- Repository containing source -->
+    {% if config.repo_url %}
+    <div class="md-nav__source">
+        {% include "partials/source.html" %}
+    </div>
+    {% endif %}
+
+    <!-- Render item list -->
+    <ul class="md-nav__list" data-md-scrollfix>
+        {% for nav_item in nav %}
+        {% set path = "nav-" + loop.index | string %}
+        {% set level = 1 %}
+        {% include "partials/nav-item.html" %}
+        {% endfor %}
+    </ul>
+</nav>

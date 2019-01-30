@@ -55,6 +55,7 @@ nav:
 
 theme:
   name: 'material'
+  custom_dir: 'theme/material'
   palette: 
     primary: 'blue grey'
     accent: 'deep orange'
