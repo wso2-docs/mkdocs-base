@@ -1,5 +1,6 @@
 site_name: WSO2 Identity Server Documentation
-
+extra_css:
+  - stylesheets/extra.css
 # Repository
 repo_name: View on Github
 repo_url: https://github.com/sherenewso2/mkdocs-base
@@ -55,6 +56,7 @@ nav:
 
 theme:
   name: 'material'
+  custom_dir: 'theme/material'
   palette: 
     primary: 'blue grey'
     accent: 'deep orange'
@@ -71,11 +73,10 @@ extra:
     search:
     language: 'en'
     tokenizer: '[\s\-\.]+'
+    feedback_repo_name: "docs-is"
    
 plugins:
    - search
-
-extra_css: [extra.css]
 
 markdown_extensions:
   - markdown_include.include:
